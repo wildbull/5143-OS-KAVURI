@@ -1,9 +1,17 @@
 class Maddy_History:
     def __init__(self):
-        self.HISTORY = ["ls -lrt", "history", "whoami", "hostname", "ps -eaf" , "du -skh", "scp -r "]
+        self.history_path = "/home/prithvi/maddy_history"
+        with open(self.history_path, "r") as fd:
+            self.HISTORY = fd.readlines()
+            self.HISTORY = [ i.strip() for i in self.HISTORY if i]
+        #self.HISTORY = ["ls -lrt", "history", "whoami", "hostname", "ps -eaf" , "du -skh", "scp -r "]
         self.MAX_HISTORY_LEN = 30
         self.curr_index = len(self.HISTORY) -1
     
+    def __del__ (self):
+        with open(self.history_path, "w") as fd:
+            fd.write("\n".join(self.HISTORY))
+
     def update_curr_index(self):
         self.curr_index = len(self.HISTORY) - 1
 

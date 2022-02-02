@@ -10,7 +10,8 @@ import sys
 import getpass
 import socket
 from time import sleep
-
+from utilities import *
+from commands import Commands
 
 from history import Maddy_History
 ##################################################################################
@@ -57,17 +58,9 @@ class _GetchWindows:
 
 getch = Getch()                             # create instance of our getch class
 history = Maddy_History()                   # create instance of our history registry
-USER_INFO = "%s@%s::\033[2;37;40m maddy_sh\033[0;37;40m :-"%(getpass.getuser(),socket.gethostname())                      # set default prompt
+commands = Commands()
 
 
-def print_cmd(cmd):
-    """ This function "cleans" off the command line, then prints
-        whatever cmd that is passed to it to the bottom of the terminal.
-    """
-    padding = " " * 80
-    sys.stdout.write("\r"+padding)
-    sys.stdout.write("\r"+USER_INFO+cmd)
-    sys.stdout.flush()
 
 
 if __name__ == '__main__':
@@ -81,6 +74,7 @@ if __name__ == '__main__':
         char = getch()                      # read a character (but don't print)
 
         if char == '\x03' or cmd == 'exit': # ctrl-c
+            del(history)
             raise SystemExit("\nBye.\n")
         
         elif char == '\x7f':                # back space pressed
@@ -132,6 +126,7 @@ if __name__ == '__main__':
             history.add(cmd)
             # This 'elif' simulates something "happening" after pressing return
             cmd = "Executing command...."   # 
+            commands.execute_command(cmd)
             print_cmd(cmd)                  
             sleep(1)    
             cmd = ""                        # reset command to nothing (since we just executed it)
