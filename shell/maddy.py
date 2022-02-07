@@ -11,7 +11,8 @@ import getpass
 import socket
 from time import sleep
 from utilities import *
-from commands import Commands
+import globals
+from commands import CommandHelper 
 
 from history import Maddy_History
 ##################################################################################
@@ -53,13 +54,17 @@ class _GetchWindows:
         import msvcrt
         return msvcrt.getch()
 
-##################################################################################
-##################################################################################
 
-getch = Getch()                             # create instance of our getch class
-history = Maddy_History()                   # create instance of our history registry
-commands = Commands()
+############################## context building ##################################
+getch = Getch()                             
+history = Maddy_History()                   
+commands = CommandHelper()
 
+#for auto-completion
+globals.dir_files_context = os.listdir()  #updated everytime cd command is run
+
+
+##################################################################################
 
 
 
@@ -125,11 +130,15 @@ if __name__ == '__main__':
             
             history.add(cmd)
             # This 'elif' simulates something "happening" after pressing return
-            cmd = "Executing command...."   # 
-            commands.execute_command(cmd)
-            print_cmd(cmd)                  
-            sleep(1)    
-            cmd = ""                        # reset command to nothing (since we just executed it)
+            #cmd = "Executing command...."   #
+            cmd = cmd.strip()
+            if cmd:
+                commands.execute_command(raw_cmd = cmd)
+                #print_cmd(cmd)                  
+                #sleep(1)    
+                cmd = ""                        # reset command to nothing (since we just executed it)
+            else:
+                cmd = "  "
 
             print_cmd(cmd)                  # now print empty cmd prompt
         else:
