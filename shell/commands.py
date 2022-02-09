@@ -65,6 +65,10 @@ class CommandHelper(object):
                 params = command [2:]
             else:
                 params = command[1:]
+
+            #Load commands dynamically
+            if cmd == "ldcmds":
+                self.load_commands()
         else:
             if 'cmd' in kwargs:
                 cmd = kwargs['cmd']

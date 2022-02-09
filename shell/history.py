@@ -1,6 +1,8 @@
+import globals
+
 class Maddy_History:
     def __init__(self):
-        self.history_path = "/home/prithvi/maddy_history"
+        self.history_path = globals.history_path #"/home/prithvi/.maddy_history"
         with open(self.history_path, "r") as fd:
             self.HISTORY = fd.readlines()
             self.HISTORY = [ i.strip() for i in self.HISTORY if i]

@@ -22,3 +22,5 @@ class Error_codes(Enum):
     EXCEPTION = 3
     RESOURCE_LIMITATION = 4
 
+make_2digits = lambda x: '0'*(2-len(x)) + x
+

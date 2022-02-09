@@ -127,15 +127,20 @@ if __name__ == '__main__':
             print_cmd(cmd)                  # print the command (again)
 
         elif char in '\r':                  # return pressed 
-            
-            history.add(cmd)
+            if cmd.strip():
+                history.add(cmd)
             # This 'elif' simulates something "happening" after pressing return
             #cmd = "Executing command...."   #
             cmd = cmd.strip()
             if cmd:
-                commands.execute_command(raw_cmd = cmd)
-                #print_cmd(cmd)                  
-                #sleep(1)    
+                try:
+                    commands.execute_command(raw_cmd = cmd)
+                    #print_cmd(cmd)                  
+                    #sleep(1)    
+                except Exception as e:
+                    print("-------------------------")
+                    print(e)
+                    print("-------------------------")
                 cmd = ""                        # reset command to nothing (since we just executed it)
             else:
                 cmd = "  "
