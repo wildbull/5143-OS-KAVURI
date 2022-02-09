@@ -29,11 +29,12 @@ def func(**kwargs):
                 os.chdir(dirPath)
                 globals.dir_files_context = os.listdir(dirPath)
             else:
-                print ("Path doesn't exist")
-                return
+                return("Path doesn't exist")
+                
         else:
-            print("Pleae provide just one path!")
-            return
+            return("Pleae provide just one path!")
+            
     else:
         os.chdir(os.path.expanduser("~"))
+        return ""
 

@@ -21,6 +21,6 @@ def func(**kwargs):
     try:
         move(params[0],params[1])
     except IOError:
-        print("unable to write to :: " + params[1])
-    return
+        return("unable to write to :: " + params[1])
+    return ""
 

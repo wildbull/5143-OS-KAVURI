@@ -20,6 +20,6 @@ def func(**kwargs):
     try:
         os.mkdir(params[0])
     except IOError:
-        print("unable to create :: " + params[0])
-    return
+        return ("unable to create :: " + params[0])
+    return ""
 

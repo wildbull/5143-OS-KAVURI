@@ -44,6 +44,8 @@ def func(**kwargs):
             destpath = os.path.abspath(os.path.join(basepath, "..", dest))
 
             shutil.copyfile(source, dest)
+        
+        return ""
 
     else:
         print("Error: ", source, " does not exist.")
