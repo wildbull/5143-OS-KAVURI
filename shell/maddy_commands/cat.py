@@ -1,6 +1,11 @@
 from utilities import *
 flags = []
-help = ''' 
+help = '''
+
+concatenates files and writes them to STDOUT
+usage:
+    cat <file_1> <file_2> ....
+ 
 '''
 def func(**kwargs):
     """ Concatenate files and send to std out
@@ -27,5 +32,5 @@ def func(**kwargs):
             except Exception as e:
                 print(e)
 
-        return(content, Error_codes.PROPER)
+        return(content)
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """
 This file is about using getch to capture input and handle certain keys 
 when the are pushed. The 'command_helper.py' was about parsing and calling functions.
@@ -10,11 +10,12 @@ import sys
 import getpass
 import socket
 from time import sleep
+
 from utilities import *
 import globals
 from commands import CommandHelper 
-
 from history import Maddy_History
+
 ##################################################################################
 ##################################################################################
 class Getch:
