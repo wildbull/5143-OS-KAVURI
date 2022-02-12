@@ -39,6 +39,15 @@ def Command_parser(func):
 
     return inner
 
+def redirect_func(file_path, content, mode):
+    try:
+        with open(file_path, mode) as fd:
+            fd.write("\n"+content)
+    except Exception as e:
+        print("UNABLE to WRITE to the file as -----------------")
+        print(e)
+    return
+
 class CommandHelper(object):
     def __init__(self):
         self.commands = {}
@@ -58,10 +67,30 @@ class CommandHelper(object):
 
     def execute_command(self, **kwargs):
         if "raw_cmd" in kwargs:
-            command = kwargs["raw_cmd"].split()
-            cmd = command [0]
+            raw_command =  kwargs["raw_cmd"].encode("ascii", "ignore").decode()
+            redirect = None
+            redirect_type = ""
+            pipes = []
+            if (">" in raw_command):
+                temp = raw_command.split(">") 
+                redirect = temp[1].strip()
+                raw_command =  temp[0].strip()
+                redirect_type = "w"
+            if (">>" in raw_command):
+                temp = raw_command.split(">>") 
+                redirect = temp[1].strip()
+                raw_command =  temp[0].strip()
+                redirect_type = "a"
+
+            if "|" in raw_command:
+                temp = raw_command.split("|")
+                pipes = [pipe.strip() for pipe in temp [1:]]
+                raw_command =  temp[0].strip()
+
+            command = raw_command.strip().split()
+            cmd = command [0].strip()
             if cmd[1].startswith("-"):
-                flags = command[1]
+                flags = list(command[1][1:])
                 params = command [2:]
             else:
                 params = command[1:]
@@ -87,10 +116,11 @@ class CommandHelper(object):
             thread = False
 
         # One way to invoke using dictionary
+        if cmd not in self.commands:
+            print("Oops !!! we dont understand the command "+cmd)
         if not thread:
             print("running it is same thread")
             results = self.commands[cmd].func(params=params)
-            print(results)
             #if not err == Error_codes.PROPER:
             #    print("ERROR : unable to execute command : Rerurn code - "+str(err))
         else:
@@ -102,6 +132,36 @@ class CommandHelper(object):
 
             c.start()
             c.join()
+        
+        if not (pipes or redirect):
+            print(results)
+            return
+
+        if pipes:
+            for pipe in pipes:
+                pipe_content = pipe.split()
+                pipe_cmd = pipe_content[0]
+                pipe_flags = []
+                pipe_params = []
+                if len(pipe_content) > 1:
+                    if pipe_content[1].starts_with("-"):
+                        pipe_flags = list(pipe_content[1])[1:]
+                        if len(pipe_params) > 2:
+                            pipe_params = pipe_content[2:]
+                    else:
+                        pipe_params = pipe_content[1:]
+                
+                if pipe_cmd not in self.commands:
+                    print("Oops !!! we dont understand the command "+pipe_cmd)
+                    return
+                results_2 = self.commands[pipe_cmd].func(params = pipe_params, input = results, flags = pipe_flags )
+        if redirect:
+            redirect_func(redirect, results, redirect_type)
+            return
+        
+        print(results)
+        return
+
         
     def exists(self, cmd):
         print(self.commands)

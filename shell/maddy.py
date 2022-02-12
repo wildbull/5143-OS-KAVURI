@@ -76,7 +76,6 @@ if __name__ == '__main__':
     print_cmd(cmd)                          # print to terminal
     
     while True:                             # loop forever
-
         char = getch()                      # read a character (but don't print)
 
         if char == '\x03' or cmd == 'exit': # ctrl-c
@@ -134,6 +133,8 @@ if __name__ == '__main__':
             #cmd = "Executing command...."   #
             cmd = cmd.strip()
             if cmd:
+                commands.execute_command(raw_cmd = cmd)
+                '''
                 try:
                     commands.execute_command(raw_cmd = cmd)
                     #print_cmd(cmd)                  
@@ -142,6 +143,7 @@ if __name__ == '__main__':
                     print("-------------------------")
                     print(e)
                     print("-------------------------")
+                '''
                 cmd = ""                        # reset command to nothing (since we just executed it)
             else:
                 cmd = "  "

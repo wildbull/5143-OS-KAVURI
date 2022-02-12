@@ -12,8 +12,6 @@ def func(**kwargs):
     flags = []
     params = []
 
-    if "input" in kwargs:
-        return
     if 'flags' in kwargs:
         flags = kwargs["flags"]
 

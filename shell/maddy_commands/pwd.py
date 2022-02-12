@@ -10,6 +10,9 @@ def func(**kwargs):
     command = ["ls"]
     flags = []
     params = []
+    
+    if "input" in kwargs:
+        return
 
     if 'flags' in kwargs:
         flags = kwargs["flags"]

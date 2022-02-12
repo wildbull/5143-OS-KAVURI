@@ -19,6 +19,7 @@ class Maddy_History:
 
     def add(self,cmd):
         if cmd:
+            cmd = cmd.encode("ascii", "ignore").decode()
             self.HISTORY.append(cmd)
             self.update_curr_index()
             #print("added command to history :: ")
