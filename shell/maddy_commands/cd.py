@@ -29,7 +29,7 @@ def func(**kwargs):
         if len(params) ==1:
             if os.path.isdir(dirPath):
                 os.chdir(dirPath)
-                globals.dir_files_context = os.listdir(dirPath)
+                globals.dir_files_context = os.listdir()
             else:
                 return("Path doesn't exist")
                 

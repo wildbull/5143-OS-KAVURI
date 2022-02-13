@@ -42,4 +42,10 @@ class Maddy_History:
             self.curr_index += 1
         return next_cmd
 
+    def get_nth_in_history(self, n):
+        try:
+            return self.HISTORY[n-1]
+        except:
+            return("Please give proper position, it is out of bounds")
+
 

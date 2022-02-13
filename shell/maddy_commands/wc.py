@@ -20,26 +20,33 @@ def func(**kwargs):
         input_content = kwargs['input']
     # If no flags were passed in, do all three
     if not flags:
-        print ("in if branch in wc")
-        if not input_content:
-            with open(params[0], "r") as f:
-                file_content = f.read()
-        else:
-            file_content = input_content
-        lines = len(file_content.split("\n"))
-        chars = len(file_content)
-        words = len(file_content.split(" "))
-
-        srting_2_print = ""
-        srting_2_print += "\nlines :: "+str(lines)
-        srting_2_print += "\nwords :: "+str(words)
-        srting_2_print += "\nchars :: "+str(chars)
-        
-        return srting_2_print
+        flags = ["l","w", "c"]
+    
+    if not input_content:
+        with open(params[0], "r") as f:
+            file_content = f.read()
     else:
-        print("flags found")
+        file_content = input_content
+    lines = 0
+    chars = 0
+    words = 0
+    
+    srting_2_print = ""
+    
+    if "l" in flags: 
+        lines = len(file_content.split("\n"))
+        srting_2_print += "\nlines :: "+str(lines)
+    if "c" in flags:
+        chars = len(file_content)
+        srting_2_print += "\nchars :: "+str(chars)
+    if "w" in flags:
+        words = len(file_content.split(" "))
+        srting_2_print += "\nwords :: "+str(words)
+    
+    return srting_2_print
 
 if __name__ == "__main__":
     print(func(params = ["cp.py"]))
     print(func(params = ["cp.py"], input = "hello world\nsilly felows"))
+    print(func(params = ["cp.py"], flags = ["l","c"]))
 

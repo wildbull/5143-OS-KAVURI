@@ -1,5 +1,5 @@
 
-flags = ["l"]
+flags = ["n"]
 help = '''
 '''
 def func(**kwargs):
@@ -15,20 +15,25 @@ def func(**kwargs):
     if 'params' in kwargs:
         params = kwargs['params']
     
-    search_string = params [0]
-
-    #TODO :: implement wild cards
+    #case where num lines is given
+    if flags:
+        num_lines = int(params[-1])
+    else:
+        #num lines is 10 by default
+        num_lines = 10
+   
     if "input" in kwargs:
         content = kwargs["input"].split("\n")
     else:
-        with open(params[1]) as fd:
+        with open(params[0]) as fd:
             content = fd.readlines()
+    
+    total_lines = len(content)
+    string_2_return = "\n".join(content[total_lines-num_lines - 1:])
 
-    results = [ i.replace(search_string , '\033[34m' + search_string + '\033[0m') for i in content if search_string in i ]
-
-    return "\n".join(results)
+    return string_2_return
 
 if __name__ == "__main__":
-    print(func(params = [ "func" , "test_file"]))
+    print(func(params = ["test_file"]))
 
 

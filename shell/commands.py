@@ -12,7 +12,7 @@ import sys
 from subprocess import call  # FOR DEMO PURPOSES ONLY!
 from maddy_commands import Commands
 from utilities import *
-
+import globals
 
 ############### Decorator #############
 
@@ -67,7 +67,7 @@ class CommandHelper(object):
 
     def execute_command(self, **kwargs):
         if "raw_cmd" in kwargs:
-            raw_command =  kwargs["raw_cmd"].encode("ascii", "ignore").decode()
+            raw_command =  kwargs["raw_cmd"]#.encode("ascii", "ignore").decode()
             redirect = None
             redirect_type = ""
             pipes = []
@@ -99,6 +99,14 @@ class CommandHelper(object):
             if cmd == "ldcmds":
                 self.load_commands()
                 return
+            if cmd.startswith("!"):
+                try:
+                    pos = int(cmd[1:])
+                    print(globals.history_obj.get_nth_in_history(pos))
+                    return
+                except:
+                    print("We could not understand the command")
+                    return
         else:
             if 'cmd' in kwargs:
                 cmd = kwargs['cmd']
@@ -119,8 +127,13 @@ class CommandHelper(object):
         if cmd not in self.commands:
             print("Oops !!! we dont understand the command "+cmd)
         if not thread:
-            print("running it is same thread")
-            results = self.commands[cmd].func(params=params)
+            #print("running it is same thread")
+            try:
+                results = self.commands[cmd].func(params=params)
+            except Exception as e:
+                print(e)
+                print("###############")
+                print(self.commands[cmd].help)
             #if not err == Error_codes.PROPER:
             #    print("ERROR : unable to execute command : Rerurn code - "+str(err))
         else:
@@ -144,17 +157,18 @@ class CommandHelper(object):
                 pipe_flags = []
                 pipe_params = []
                 if len(pipe_content) > 1:
-                    if pipe_content[1].starts_with("-"):
+                    if pipe_content[1].startswith("-"):
                         pipe_flags = list(pipe_content[1])[1:]
-                        if len(pipe_params) > 2:
+                        if len(pipe_content) > 2:
                             pipe_params = pipe_content[2:]
                     else:
                         pipe_params = pipe_content[1:]
+
                 
                 if pipe_cmd not in self.commands:
                     print("Oops !!! we dont understand the command "+pipe_cmd)
                     return
-                results_2 = self.commands[pipe_cmd].func(params = pipe_params, input = results, flags = pipe_flags )
+                results = self.commands[pipe_cmd].func(params = pipe_params, input = results, flags = pipe_flags )
         if redirect:
             redirect_func(redirect, results, redirect_type)
             return

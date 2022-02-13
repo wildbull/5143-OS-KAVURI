@@ -59,6 +59,7 @@ class _GetchWindows:
 ############################## context building ##################################
 getch = Getch()                             
 history = Maddy_History()                   
+globals.history_obj = history
 commands = CommandHelper()
 
 #for auto-completion
@@ -132,6 +133,8 @@ if __name__ == '__main__':
             # This 'elif' simulates something "happening" after pressing return
             #cmd = "Executing command...."   #
             cmd = cmd.strip()
+            cmd = cmd.encode("ascii", "ignore").decode()
+            print("command in maddy :: ", cmd)
             if cmd:
                 commands.execute_command(raw_cmd = cmd)
                 '''
