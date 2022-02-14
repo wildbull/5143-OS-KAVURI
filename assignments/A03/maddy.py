@@ -136,8 +136,8 @@ if __name__ == '__main__':
             cmd = cmd.encode("ascii", "ignore").decode()
             print("command in maddy :: ", cmd)
             if cmd:
-                commands.execute_command(raw_cmd = cmd)
-                '''
+                #commands.execute_command(raw_cmd = cmd)
+                #'''
                 try:
                     commands.execute_command(raw_cmd = cmd)
                     #print_cmd(cmd)                  
@@ -146,7 +146,7 @@ if __name__ == '__main__':
                     print("-------------------------")
                     print(e)
                     print("-------------------------")
-                '''
+                #'''
                 cmd = ""                        # reset command to nothing (since we just executed it)
             else:
                 cmd = "  "
