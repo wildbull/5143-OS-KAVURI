@@ -149,6 +149,52 @@ def func(**kwargs):
 
 
             else:
+                stat_info = os.stat(file_path)
+                octalPrem = oct(stat_info.st_mode)[-3:] # permissions
+                octalPrem = int(octalPrem)
+                octalP = octalPrem // 10
+                owner = octalP //10
+                GroupP = octalP % 10
+                Others = octalPrem %10
+
+                ts = stat_info.st_mtime
+                time_m = stat_info.st_mtime
+                if(ts < recent) or (ts > now):
+                    time_fmt = "%b %e %Y"
+                else:
+                    time_fmt = "%b %e %R"
+                    time_str = time.strftime(time_fmt, time.gmtime(ts))
+                    time_str2 = time.strftime(time_fmt,time.gmtime(time_m))
+
+                    name = stat(file_path).st_uid  # User id of the owner                    
+                    try:
+                        name = "%-3s" % os.getcwd(stat_info.st_uid)[0]
+                    except:
+                        name = "%-3s" % (stat_info.st_uid)
+                    try:
+                        group = "%-3s" % os.getegid(stat_info.st_gid) [0]
+                    except:
+                        group = "%-3s" % stat_info.st_gid
+
+
+                    nlink = "%4d" % stat_info.st_nlink
+                    total = len([name for name in os.listdir(dir_path) if os.path.isfile(file_path)])
+
+                if not os.path.basename(file_path).startswith("."):
+                    string_2_return += "\n" + permissions[Others] + permissions[GroupP] + permissions[owner] + " "
+                    string_2_return += nlink + " "
+
+                    size = "%8d" % stat_info.st_size
+                    string_2_return += name + " "
+                    string_2_return += group + " "
+                    string_2_return += size + " "
+                    string_2_return += time_str + "  "
+                    if os.path.isdir(file_path):
+                        string_2_return += file_path + "/"
+                    else:
+                        string_2_return += file_path
+
+
                 try:
                     stat_info = os.lstat(file_path)
                 except:
@@ -156,16 +202,15 @@ def func(**kwargs):
                     continue
 
                 if not flags:
-                    if not os.path.basename(file_path).startswith("."):
-                        if os.path.isdir(file_path):
-                            string_2_return += "\n"+ file_path + "/"
-                        else:
-                            string_2_return += "\n" + file_path
+                    if os.path.isdir(file_path):
+                        string_2_return += "\n"+ file_path + "/"
+                    else:
+                        string_2_return += "\n" + file_path
 
 
     return string_2_return
 
 if __name__ == "__main__":
-    print(func(params = [], flags = ["a","h"]))
-    print(func(params = ["test_dir"], flags = ["l"]))
+    print(func(params = [], flags = ["l","a","h"]))
+    print(func(params = ["test_dir"], flags = ["l", "a", "h"]))
 
