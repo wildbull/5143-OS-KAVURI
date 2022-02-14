@@ -1,6 +1,6 @@
 
-#MADDY_SHELL
-###A command prompt similar to shell,  implemented completely in Python.
+MADDY_SHELL
+A command prompt similar to shell,  implemented completely in Python.
 
 ############## Usage Instructions ###############
 ```
@@ -10,16 +10,19 @@ For development comfort, we have put some constraints regarding command syntax
     3. Multiple pipes can requested in any command, but pipes should never succed redirects.
 
     A command with pipes and redirects can look like one of these ::
+
         1. Only redirect :
             cat some_file > some_other_file
+
         2. Only pipes :
             cat some_file | grep some_string | wc -l
+
         3. Pipes with redirects :
             cat some_file | grep some_string | wc -l >> some_other_file
 ```
 ##################################################
 
-##intorduction :
+intorduction :
 ```
     1. Commads are fetched and loaded from maddy_commands dir.
     2. Whenever you want to add a new command, please copy the command's implementation into maddy_commands dir 
