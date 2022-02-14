@@ -126,6 +126,23 @@ if __name__ == '__main__':
                 #cmd = cmd[:-1]
             
             print_cmd(cmd)                  # print the command (again)
+        
+        elif char in '\t':
+            #case where command is already chosen
+            #and the user is looking for input files
+            if " " in cmd.strip():
+                cmd_split = cmd.split(" ")
+                string = cmd_split [-1]
+                files_matching = [ file for file in globals.dir_files_context if file.startswith(string)]
+                if len(files_matching) == 1:
+                    cmd_split[-1] = files_matching[0]
+                    cmd = " ".join(cmd_split)
+                else:
+                    print("")
+                    for i in files_matching:
+                        print(i)
+
+            print_cmd(cmd)                  # print the command (again)
 
         elif char in '\r':                  # return pressed 
             if cmd.strip():

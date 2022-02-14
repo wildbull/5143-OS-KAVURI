@@ -6,8 +6,8 @@ a command prompt similar to shell,  implemented completely in Python.
 ```
 For development comfort, we have put some constraints regarding command syntax
     1. Only out-ward redirects are supported , that is , ">" and ">>". In-ward redirects are not supported.
-    2. Only one redirect is expected per command
-    3. Multiple pipes can requested in any command, but pipes should never succed redirects.
+    2. At most one redirect is expected per command
+    3. Multiple pipes can requested in any command, but pipes should never succeed redirects.
 
     A command with pipes and redirects can look like one of these ::
 
