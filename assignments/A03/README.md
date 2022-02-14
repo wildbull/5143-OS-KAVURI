@@ -3,7 +3,7 @@ MADDY_SHELL
 A command prompt similar to shell,  implemented completely in Python.
 
 ############## Usage Instructions ###############
-
+'''
 For development comfort, we have put some constraints regarding command syntax
     1. Only out-ward redirects are supported , that is , ">" and ">>". In-ward redirects are not supported.
     2. Only one redirect is expected per command
@@ -16,7 +16,7 @@ For development comfort, we have put some constraints regarding command syntax
             cat some_file | grep some_string | wc -l
         3. Pipes with redirects :
             cat some_file | grep some_string | wc -l >> some_other_file
-
+'''
 ##################################################
 
 intorduction :
@@ -28,7 +28,7 @@ intorduction :
 #################################################
 
 Project structure :: 
-
+'''
 .
 ├── README.md
 ├── commands.py
@@ -66,3 +66,4 @@ Project structure ::
 └── utilities.py
 
 2 directories, 32 files
+'''
