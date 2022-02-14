@@ -21,7 +21,7 @@ def func(**kwargs):
 
     if 'params' in kwargs:
         params = kwargs['params']
-
+    
     case = 0
     arr = [0,0,0]
 

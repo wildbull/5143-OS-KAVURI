@@ -89,12 +89,12 @@ class CommandHelper(object):
 
             command = raw_command.strip().split()
             cmd = command [0].strip()
-            if cmd[1].startswith("-"):
+            if command[1].startswith("-"):
                 flags = list(command[1][1:])
                 params = command [2:]
             else:
                 params = command[1:]
-
+            
             #Load commands dynamically
             if cmd == "ldcmds":
                 self.load_commands()
@@ -129,7 +129,7 @@ class CommandHelper(object):
         if not thread:
             #print("running it is same thread")
             try:
-                results = self.commands[cmd].func(params=params)
+                results = self.commands[cmd].func(params=params, flags = flags)
             except Exception as e:
                 print(e)
                 print("###############")
