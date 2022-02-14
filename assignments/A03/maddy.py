@@ -141,6 +141,18 @@ if __name__ == '__main__':
                     print("")
                     for i in files_matching:
                         print(i)
+            #case where the user is looking for command itself
+            else:
+                if not cmd.strip():
+                    for i in commands.commands.keys():
+                        print(i)
+                else:
+                    matching_commands = [i for i in commands.commands.keys() if i.startswith(cmd.strip())]
+                    if len(matching_commands) == 1:
+                        cmd = matching_commands[0]
+                    else:
+                        for i in matching_commands:
+                            print(i)
 
             print_cmd(cmd)                  # print the command (again)
 
