@@ -20,12 +20,10 @@ For development comfort, we have put some constraints regarding command syntax
         3. Pipes with redirects :
             cat some_file | grep some_string | wc -l >> some_other_file
 ```
-##################################################
 To Run the Shell, please use the following command :
     ```
         python3 maddy.py
     ```
-##################################################
 
 intorduction :
 ```
