@@ -89,11 +89,15 @@ class CommandHelper(object):
 
             command = raw_command.strip().split()
             cmd = command [0].strip()
-            if command[1].startswith("-"):
-                flags = list(command[1][1:])
-                params = command [2:]
-            else:
-                params = command[1:]
+            flags = []
+            params = []
+            if len(command) > 1:
+                if command[1].startswith("-"):
+                    flags = list(command[1][1:])
+                    if len(command) > 2:
+                        params = command [2:]
+                else:
+                    params = command[1:]
             
             #Load commands dynamically
             if cmd == "ldcmds":
@@ -126,6 +130,7 @@ class CommandHelper(object):
         # One way to invoke using dictionary
         if cmd not in self.commands:
             print("Oops !!! we dont understand the command "+cmd)
+            return
         if not thread:
             #print("running it is same thread")
             try:

@@ -165,8 +165,8 @@ if __name__ == '__main__':
             cmd = cmd.encode("ascii", "ignore").decode()
             print("command in maddy :: ", cmd)
             if cmd:
-                #commands.execute_command(raw_cmd = cmd)
-                #'''
+                commands.execute_command(raw_cmd = cmd)
+                '''
                 try:
                     commands.execute_command(raw_cmd = cmd)
                     #print_cmd(cmd)                  

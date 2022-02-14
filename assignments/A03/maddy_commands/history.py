@@ -22,8 +22,12 @@ def func(**kwargs):
 
     with open(globals.history_path) as fd:
         content = fd.readlines()
+   
     
     for i in range(len(content)):
-        content[i] = make_2digits(str(i+1)) + "    " + content[i]
+        try:
+            content[i] = make_2digits(str(i+1)) + "    " + content[i]
+        except:
+            pass
     
     return "\n".join(content)
