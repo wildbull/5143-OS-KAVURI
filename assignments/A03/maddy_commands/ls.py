@@ -56,6 +56,7 @@ def func(**kwargs):
 
     now = int(time.time())
     recent = now - (4*30*24*60*60) #4 months ago
+
     for dir_path in params:
         for file_path in os.listdir(dir_path):
             file_path = os.path.join(dir_path , file_path)
@@ -65,7 +66,7 @@ def func(**kwargs):
                 except:
                     string_2_return += "\n" + "File/Dir not found :: "+file_path
 
-                if not file_path.startswith("."):
+                if not os.path.basename(file_path).startswith("."):
                     if os.path.isdir(file_path):
                         string_2_return += "\n"+ file_path + "/"
                     else:

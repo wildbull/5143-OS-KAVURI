@@ -112,7 +112,7 @@ if __name__ == '__main__':
             if direction in 'C':            # right arrow pressed    
                 # move the cursor to the right on your command prompt line
                 # prints out 'right' then erases it (just to show something)
-                cmd += u"\u2192"
+                #cmd += u"\u2192"
                 print_cmd(cmd)
                 sleep(0.3)
                 #cmd = cmd[:-1]
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             if direction in 'D':            # left arrow pressed
                 # moves the cursor to the left on your command prompt line
                 # prints out 'left' then erases it (just to show something)
-                cmd += u"\u2190"
+                #cmd += u"\u2190"
                 print_cmd(cmd)
                 sleep(0.3)
                 #cmd = cmd[:-1]
@@ -163,10 +163,9 @@ if __name__ == '__main__':
             #cmd = "Executing command...."   #
             cmd = cmd.strip()
             cmd = cmd.encode("ascii", "ignore").decode()
-            print("command in maddy :: ", cmd)
             if cmd:
-                commands.execute_command(raw_cmd = cmd)
-                '''
+                #commands.execute_command(raw_cmd = cmd)
+                #'''
                 try:
                     commands.execute_command(raw_cmd = cmd)
                     #print_cmd(cmd)                  
