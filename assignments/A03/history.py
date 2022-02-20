@@ -10,7 +10,7 @@ class Maddy_History:
         self.MAX_HISTORY_LEN = 30
         self.curr_index = len(self.HISTORY) -1
     
-    def __del__ (self):
+    def dump (self):
         with open(self.history_path, "w") as fd:
             fd.write("\n".join(self.HISTORY))
 

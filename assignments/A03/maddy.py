@@ -80,10 +80,12 @@ if __name__ == '__main__':
         char = getch()                      # read a character (but don't print)
 
         if char == '\x03' or cmd == 'exit': # ctrl-c
-            del(history)
-            raise SystemExit("\nBye.\n")
-        
-        elif char == '\x7f':                # back space pressed
+            history.dump()
+            print("\nBye Bye.\n")
+            sys.exit(0)
+
+        #elif char == '\x7f':                # back space pressed
+        elif char == '\x08':                # back space pressed
             cmd = cmd[:-1]
             print_cmd(cmd)
             
@@ -164,8 +166,8 @@ if __name__ == '__main__':
             cmd = cmd.strip()
             cmd = cmd.encode("ascii", "ignore").decode()
             if cmd:
-                #commands.execute_command(raw_cmd = cmd)
-                #'''
+                commands.execute_command(raw_cmd = cmd)
+                '''
                 try:
                     commands.execute_command(raw_cmd = cmd)
                     #print_cmd(cmd)                  
@@ -174,7 +176,7 @@ if __name__ == '__main__':
                     print("-------------------------")
                     print(e)
                     print("-------------------------")
-                #'''
+                '''
                 cmd = ""                        # reset command to nothing (since we just executed it)
             else:
                 cmd = "  "

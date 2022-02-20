@@ -32,8 +32,10 @@ def func(**kwargs):
 
             sourcepath = os.path.abspath(os.path.join(basepath, "..", source))
             destpath = os.path.abspath(os.path.join(basepath, "..", dest))
+            if os.path.isdir(destpath):
+                destpath = os.path.join(destpath,os.path.basename(sourcepath))
 
-            shutil.copyfile(source, dest)
+            shutil.copyfile(sourcepath, destpath)
 
         else:
             # Create the file for writing

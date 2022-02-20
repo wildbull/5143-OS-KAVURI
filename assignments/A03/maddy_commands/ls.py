@@ -78,9 +78,9 @@ def func(**kwargs):
                     string_2_return += "\n" + "File/Dir not found :: "+file_path
                 
                 if os.path.isdir(file_path):
-                    string_2_return += "\n"+ file_path + "/"
+                    string_2_return += "\n"+ os.path.basename(file_path) + "/"
                 else:
-                    string_2_return += "\n"+ file_path
+                    string_2_return += "\n"+ os.path.basename(file_path)
                 
             elif case == 3: # ls -ha
                 stat_info = os.stat(file_path)
@@ -90,7 +90,7 @@ def func(**kwargs):
                         if size < 1024.0:
                             h_size = make_4digits(str(size)[:4]) + unit
                             break
-                    string_2_return += "\n"+ h_size + "     " + file_path + "/"
+                    string_2_return += "\n"+ h_size + "     " + os.path.basename(file_path) + "/"
                 else:
                     if not os.path.basename(file_path).startswith("."):
                         size = stat_info.st_size
@@ -100,7 +100,7 @@ def func(**kwargs):
                                 break
                             else:
                                 size /= 1024.0
-                    string_2_return += "\n"+ h_size + "     " + file_path
+                    string_2_return += "\n"+ h_size + "     " + os.path.basename(file_path)
                         
             elif case == 4: # ls -l
                 stat_info = os.stat(file_path)
@@ -144,9 +144,9 @@ def func(**kwargs):
                     string_2_return += size + " "
                     string_2_return += time_str + "  "
                     if os.path.isdir(file_path):
-                        string_2_return += file_path + "/"
+                        string_2_return += os.path.basename(file_path) + "/"
                     else:
-                        string_2_return += file_path
+                        string_2_return += os.path.basename(file_path)
 
 
             else:
@@ -191,9 +191,9 @@ def func(**kwargs):
                     string_2_return += size + " "
                     string_2_return += time_str + "  "
                     if os.path.isdir(file_path):
-                        string_2_return += file_path + "/"
+                        string_2_return += os.path.basename(file_path) + "/"
                     else:
-                        string_2_return += file_path
+                        string_2_return += os.path.basename(file_path)
 
 
                 try:
@@ -204,9 +204,9 @@ def func(**kwargs):
 
                 if not flags:
                     if os.path.isdir(file_path):
-                        string_2_return += "\n"+ file_path + "/"
+                        string_2_return += "\n"+ os.path.basename(file_path) + "/"
                     else:
-                        string_2_return += "\n" + file_path
+                        string_2_return += "\n" + os.path.basename(file_path)
 
 
     return string_2_return

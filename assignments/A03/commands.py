@@ -136,7 +136,7 @@ class CommandHelper(object):
             try:
                 results = self.commands[cmd].func(params=params, flags = flags)
             except Exception as e:
-                print(e)
+                results = e
                 print("###############")
                 print(self.commands[cmd].help)
             #if not err == Error_codes.PROPER:
@@ -152,6 +152,7 @@ class CommandHelper(object):
             c.join()
         
         if not (pipes or redirect):
+            print("  ")
             print(results)
             return
 
@@ -178,6 +179,7 @@ class CommandHelper(object):
             redirect_func(redirect, results, redirect_type)
             return
         
+        print(" ")
         print(results)
         return
 
