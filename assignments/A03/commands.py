@@ -103,6 +103,7 @@ class CommandHelper(object):
             if cmd == "ldcmds":
                 self.load_commands()
                 return
+
             if cmd.startswith("!"):
                 try:
                     pos = int(cmd[1:])
@@ -129,12 +130,19 @@ class CommandHelper(object):
 
         # One way to invoke using dictionary
         if cmd not in self.commands:
-            print("Oops !!! we dont understand the command "+cmd)
-            return
+            #check if the command is man
+            if cmd == "man":
+                pass
+            else:
+                print("Oops !!! we dont understand the command "+cmd)
+                return
         if not thread:
             #print("running it is same thread")
             try:
-                results = self.commands[cmd].func(params=params, flags = flags)
+                if cmd == "man":
+                    results = self.commands[params[0]].help
+                else:
+                    results = self.commands[cmd].func(params=params, flags = flags)
             except Exception as e:
                 results = e
                 print("###############")

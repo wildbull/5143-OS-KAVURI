@@ -1,6 +1,6 @@
-from shutil import move
 import os
 from utilities import *
+import shutil
 
 flags = []
 help = '''
@@ -20,9 +20,14 @@ def func(**kwargs):
     if 'params' in kwargs:
         params = kwargs['params']
 
-    try:
-        move(params[0],params[1])
-    except IOError:
-        return("unable to write to :: " + params[1])
-    return ""
+    if not params:
+        return("Please provide while file to open")
+        
+
+    os.system(" vim "+params[0] )
+
+    return "done"
+    
+    
+
 
