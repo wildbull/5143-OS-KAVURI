@@ -1,4 +1,4 @@
-from shutil import move
+from shutil import move, rmtree
 import os
 from utilities import *
 
@@ -21,12 +21,14 @@ def func(**kwargs):
         params = kwargs['params']
     
     string_2_return = ""
-
+    '''
     if flags:
-        if flags[0] == '-r':
+        if 'r' in flags:
             shutil.rmtree(params[0])
             string_2_return += (params[0], "was deleted.\n")
-
+    '''
+    if not True:
+        pass
     else:
         if not params:
             string_2_return += "Error: Please enter a file name after rm.\n"
@@ -55,7 +57,14 @@ def func(**kwargs):
                 index = 0
                 for p in params:
                     if os.path.exists(params[index]):
-                        os.remove(params[index])
+                        if os.path.isdir(params[index]):
+                            print("flags :: ", flags)
+                            if "r" in flags:
+                                rmtree(params[index])
+                            else:
+                                string_2_return += "Error :: provided path is a dir, if you want to remove a dir you must specify recursive -r"
+                        else:
+                            os.remove(params[index])
                     else:
                         string_2_return += params[index] + "  :: Error :: The file does not exist.\n"
                 index += 1

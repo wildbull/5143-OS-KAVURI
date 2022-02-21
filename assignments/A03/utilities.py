@@ -5,7 +5,7 @@ import socket
 from enum import Enum
 from time import sleep
 
-USER_INFO = "%s@%s::\033[2;37;40m maddy_sh\033[0;37;40m :-"%(getpass.getuser(),socket.gethostname())                      # set default prompt
+USER_INFO = "%s@%s::\033[2;37;40m maddy_sh\033[0;37;40m ::"%(getpass.getuser(),socket.gethostname())                      # set default prompt
 def print_cmd(cmd):
     """ This function "cleans" off the command line, then prints
         whatever cmd that is passed to it to the bottom of the terminal.

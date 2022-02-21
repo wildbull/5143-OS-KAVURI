@@ -107,10 +107,11 @@ class CommandHelper(object):
             if cmd.startswith("!"):
                 try:
                     pos = int(cmd[1:])
+                    print()
                     print(globals.history_obj.get_nth_in_history(pos))
                     return
                 except:
-                    print("We could not understand the command")
+                    print("\nWe could not understand the command")
                     return
         else:
             if 'cmd' in kwargs:
@@ -134,7 +135,7 @@ class CommandHelper(object):
             if cmd == "man":
                 pass
             else:
-                print("Oops !!! we dont understand the command "+cmd)
+                print("\nOops !!! we dont understand the command "+cmd)
                 return
         if not thread:
             #print("running it is same thread")

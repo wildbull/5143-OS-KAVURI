@@ -68,9 +68,9 @@ def func(**kwargs):
 
                 if not os.path.basename(file_path).startswith("."):
                     if os.path.isdir(file_path):
-                        string_2_return += "\n"+ file_path + "/"
+                        string_2_return += "\n"+ os.path.basename(file_path) + "/"
                     else:
-                        string_2_return += "\n"+ file_path
+                        string_2_return += "\n"+ os.path.basename(file_path)
             elif case == 1: # ls -a
                 try:
                     stat_info = os.stat(file_path)
