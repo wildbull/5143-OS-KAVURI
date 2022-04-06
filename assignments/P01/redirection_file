@@ -1,0 +1,10 @@
+
+from [34mhistory[0m import Maddy_History
+[34mhistory[0m = Maddy_History()                   
+globals.[34mhistory[0m_obj = [34mhistory[0m
+            [34mhistory[0m.dump()
+                # get the PREVIOUS command from your [34mhistory[0m (if there is one)
+                cmd = [34mhistory[0m.prev_cmd(cmd)
+                # get the NEXT command from [34mhistory[0m (if there is one)
+                cmd = [34mhistory[0m.next_cmd()
+                [34mhistory[0m.add(cmd)

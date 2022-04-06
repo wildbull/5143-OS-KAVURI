@@ -1,0 +1,377 @@
+Global time step - 0
+released jobs ::  []
+io released jobs ::  []
+time step =  1 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 0 
+WaitQueue Items: 0 
+RunningQueue Items: 1 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 0 \nWaitQueue Items: 0 \nRunningQueue Items: 1 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+1 3
+released jobs ::  []
+io released jobs ::  []
+time step =  2 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 0 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 0 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+2 3
+cpu burst details
+1 32
+released jobs ::  []
+io released jobs ::  []
+time step =  3 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 1 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 1 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+3 3
+burst completed
+released jobs ::  [At: 1, Pid: 5
+CpuBursts: [23, 18, 17, 26] , 
+IoBursts: [8, 7, 4, 9]
+CPUWaitTime: 0 , IOWaitTime: 0
+]
+io released jobs ::  []
+time step =  4 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 1 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 1 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+2 32
+cpu burst details
+1 28
+released jobs ::  []
+io burst details
+1 8
+io released jobs ::  []
+time step =  5 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 2 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 2 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+3 32
+cpu burst details
+2 28
+released jobs ::  []
+io burst details
+2 8
+io released jobs ::  []
+time step =  6 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 3 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 3 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+4 32
+cpu burst details
+3 28
+released jobs ::  []
+io burst details
+3 8
+io released jobs ::  []
+time step =  7 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 4 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 4 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+5 32
+cpu burst details
+4 28
+released jobs ::  []
+io burst details
+4 8
+io released jobs ::  []
+time step =  8 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 5 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 5 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+6 32
+cpu burst details
+5 28
+released jobs ::  []
+io burst details
+5 8
+io released jobs ::  []
+time step =  9 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 6 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 6 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+7 32
+cpu burst details
+6 28
+released jobs ::  []
+io burst details
+6 8
+io released jobs ::  []
+time step =  10 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 7 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 7 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+8 32
+cpu burst details
+7 28
+released jobs ::  []
+io burst details
+7 8
+io released jobs ::  []
+time step =  11 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 8 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 1 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 8 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 1 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+9 32
+cpu burst details
+8 28
+released jobs ::  []
+io burst details
+8 8
+io released jobs ::  [At: 1, Pid: 5
+CpuBursts: [23, 18, 17, 26] , 
+IoBursts: [7, 4, 9]
+CPUWaitTime: 0 , IOWaitTime: 8
+]
+time step =  12 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 10 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 10 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+10 32
+cpu burst details
+9 28
+released jobs ::  []
+io released jobs ::  []
+time step =  13 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 11 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 11 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+11 32
+cpu burst details
+10 28
+released jobs ::  []
+io released jobs ::  []
+time step =  14 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 12 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 12 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+12 32
+cpu burst details
+11 28
+released jobs ::  []
+io released jobs ::  []
+time step =  15 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 13 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 13 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+13 32
+cpu burst details
+12 28
+released jobs ::  []
+io released jobs ::  []
+time step =  16 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 14 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 14 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+14 32
+cpu burst details
+13 28
+released jobs ::  []
+io released jobs ::  []
+time step =  17 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 15 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 15 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+15 32
+cpu burst details
+14 28
+released jobs ::  []
+io released jobs ::  []
+time step =  18 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 16 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 16 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+16 32
+cpu burst details
+15 28
+released jobs ::  []
+io released jobs ::  []
+time step =  19 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 17 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 17 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
+Global time step - 0
+cpu burst details
+17 32
+cpu burst details
+16 28
+released jobs ::  []
+io released jobs ::  []
+time step =  20 
+
+JobStateQueue Items: 0 
+ReadyQueue Items: 18 
+WaitQueue Items: 0 
+RunningQueue Items: 2 
+IoQueue Items: 0 
+TerminatedQueue Items: 0 
+
+<__main__.FCFS object at 0x7efde30e0400>
+['JobStateQueue Items: 0 \nReadyQueue Items: 18 \nWaitQueue Items: 0 \nRunningQueue Items: 2 \nIoQueue Items: 0 \nTerminatedQueue Items: 0 \n']
