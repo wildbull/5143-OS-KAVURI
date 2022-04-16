@@ -246,6 +246,7 @@ class RR:
     def __init__(self, data):
         self.data = data
         self.time = 0
+        self.RR_quantum = 5
         self.newQueue = NewQueue 
         self.readyQueue = ReadyQueue ()
         self.waitQueue = WaitQueue ()
@@ -265,6 +266,13 @@ class RR:
         self.newQueue.emptyq()
         
         released_jobs = self.runningQueue.incrementTime()
+
+        for job in self.runningQueue.q:
+            if not job.currBurstCpuUsage<self.RR_quantum:
+                self.runningQueue.q.remove(job)
+                released_jobs.append(job)
+
+
         print("released jobs :: ", released_jobs)
         # declare a job completed if a job doesnt have any more cpuBursts left in released jobs
         completed_jobs = [i for i in released_jobs if not len(i.cpuBursts)]
@@ -279,6 +287,39 @@ class RR:
                     print("############## EXCEPTION in FCFS run_ts cpu_burst ################")
                     print(e)
                     break
+
+        self.waitQueue.incrementTime()
+        io_releases = self.ioQueue.incrementTime()
+        
+        print("io released jobs :: ", io_releases)
+        
+        #add jobs to io queue
+        for i in released_jobs:
+            if i not in completed_jobs:
+                self.waitQueue.add(i)
+        
+        for i in io_releases:
+            self.readyQueue.add(i)
+
+        if len(self.waitQueue.q):
+            while len(self.ioQueue.q) < NUM_IO_DEVICES:
+                try:
+                    if len(self.waitQueue.q):
+                        self.ioQueue.add(self.waitQueue.remove())
+                    else:
+                        break
+                except Exception as e:
+                    print("############## EXCEPTION in FCFS run_ts io_burst ################")
+                    print(e)
+                    break
+
+        for job in completed_jobs:
+            self.terminatedQueue.add(completed_jobs)
+        
+        results = print_ques(self)
+        print("time step = ",self.time , "\n")
+        print(results)
+        return results
 
 
 class PB:
@@ -362,12 +403,12 @@ class Simulator:
         self.global_time = 0        
         
         #create schedulers
-        self.schedulers.append(PB(data))
+        self.schedulers.append(RR(data))
         '''
         self.schedulers.append(FCFS(data))
         self.schedulers.append(SJF(data))
         self.schedulers.append(SRT(data))
-        self.schedulers.append(RR(data))
+        self.schedulers.append(PB(data))
         '''
 
 

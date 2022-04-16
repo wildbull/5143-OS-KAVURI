@@ -1,5 +1,6 @@
 # Import Module
 from tkinter import *
+from ttkthemes import ThemedTk
 import json
 
 from main import Pcb,JobStateQueue,ReadyQueue,WaitQueue
@@ -25,7 +26,7 @@ def load_data():
     return pcb_objs
 
 # create root window
-root = Tk()
+root = ThemedTk(theme = "yaru")
  
 # root window title and dimension
 root.title("CPU Scheduling Simulator")
