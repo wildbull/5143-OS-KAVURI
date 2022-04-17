@@ -1,20 +1,36 @@
+from asyncore import write
+from datetime import datetime
 from gettext import install
+#from logging import Level
+from multiprocessing import Lock
 import sys
 import getopt
 from time import sleep
+import threading
+import json
+from random import shuffle
+
 import memory
 import rwLock
-import json
-
 #default number of writers
 NUM_WRITERS = 5
 NUM_INSTRUCTIONS_PER_FILE = 128
 NUM_REGISTERS = 2
-LOCK_ENTIRE_MEM = False
+LOCK_ENTIRE_MEM = True
 
 #GLOGAL LOCK
-LOCK = rwLock.ReadWriteLock()
+LOCK = rwLock.ReadWriteLock(withPromotion=True)
+LOCK_A = rwLock.ReadWriteLock()
+LOCK_B = rwLock.ReadWriteLock()
+LOCK_C = rwLock.ReadWriteLock()
 
+
+#reader threads
+READER_THREADS = []
+#writer threads
+WRITER_THREADS = []
+#output thread
+OUTPUT_THREAD = None
 #GLOBAL data
 with open("memory.json") as fd:
     MEMORY = json.load(fd)
@@ -59,7 +75,7 @@ def reader():
         #acquire lock
         with rwLock.ReadRWLock(LOCK) as lock:
             #store the values in dummy variable
-            sleep(0.3)
+            sleep(0.5)
         
     pass
 
@@ -78,22 +94,55 @@ def writer(file_name):
     #execute_instruction(instructions[0])
     for instruction in instructions:
         #acquire lock
+        #TODO add logic to identify memory location to use lock specific to the location
         with rwLock.WriteRWLock(LOCK) as lock:
             execute_instruction(instruction)
+            sleep(0.3)
             #run the instrutctions
-        pass
+
+def printer(lock):
+    print("Number of readers up :: ", len(READER_THREADS))
+    print("Number of writers up :: ", len(WRITER_THREADS))
+    print("readers = " + str(lock._readers) + " , Writers = "+ str(lock._writers) )
+    #print("readers = "+ "\n".join(lock._readerList))
+    #print("readers = "+ "\n".join(lock._writerList))
+    sleep(0.3)
+
 
 def create_threads():
     num_readers = NUM_WRITERS * 5
 
     #create readers
-    #for i in range()
-    #create writers
-
-    #run all of them randomly using shuffle
-
+    for i in range(num_readers):
+        READER_THREADS.append(threading.Thread(target=reader))
     
+    for i in range(NUM_WRITERS):
+        WRITER_THREADS.append(threading.Thread(target=writer, args=("Instructions_"+str(i)+".txt",)))
+    
+    #OUTPUT_THREAD = threading.Thread(target = printer)
     return
+
+def run_threads():
+    #start randomly using shuffle
+    shuffle(READER_THREADS)
+    shuffle(WRITER_THREADS)
+
+    for k in WRITER_THREADS:
+        k.start()
+    for k in READER_THREADS:
+        k.start()
+    return 
+
+
+def print_thread_handler():
+    while True:
+        if LOCK_ENTIRE_MEM:
+            printer(LOCK)
+        else:
+            printer(LOCK_A)
+            printer(LOCK_B)
+            printer(LOCK_C)
+
 
 if __name__ == "__main__":
     try:
@@ -106,10 +155,22 @@ if __name__ == "__main__":
         if i == "-w" or i == "--writers":
             NUM_WRITERS = int(o.strip())
         if i == "-f" or i == "--full_lock":
-            LOCK_ENTIRE_MEM = True
+            LOCK_ENTIRE_MEM = False
     
+    #TODO :: collect start and end time here
     #generate_instruction_files()
-    writer("Instructions_4.txt")
+    start_time = datetime.now()
+    create_threads()
+    run_threads()
+    printer_thread = threading.Thread(target=print_thread_handler)
+    printer_thread.start()
+    for tr in WRITER_THREADS:
+        tr.join()
+    end_time = datetime.now()
+    #printer_thread.pause()
+
+    print("time taken :: ", end_time - start_time)
+    #writer("Instructions_4.txt")
 
 
     
