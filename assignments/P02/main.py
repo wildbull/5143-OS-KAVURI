@@ -113,7 +113,8 @@ class JobStateQueue:
   def print(self,max=None):
     if not max:
       max = len(self.q)
-    print(self.q[:max])
+    #print(self.q[:max])
+    return str(self.q[:max])
 
   def length(self):
     return len(self.q)
@@ -171,8 +172,8 @@ class IoQueue(JobStateQueue):
     for p in self.q:
       p.IOWaitTime += 1
       p.currBurstIoUsage += 1
-      print("io burst details")
-      print(p.currBurstIoUsage, p.currIoBurst)
+      #print("io burst details")
+      #print(p.currBurstIoUsage, p.currIoBurst)
       if not p.currBurstIoUsage < p.currIoBurst:
         p.rem_io_burst()
         IO_burst_completed.append(p)
@@ -196,10 +197,10 @@ class RunningQueue(JobStateQueue):
     for p in self.q:
       p.cpuUsage += 1
       p.currBurstCpuUsage += 1
-      print("cpu burst details")
-      print(p.currBurstCpuUsage, p.currCpuBurst)
+      #print("cpu burst details")
+      #print(p.currBurstCpuUsage, p.currCpuBurst)
       if not p.currBurstCpuUsage < p.currCpuBurst :
-        print("burst completed")
+        #print("burst completed")
         p.rem_cpu_burst()
         completed_processes.append(p)
         self.q.remove(p)
