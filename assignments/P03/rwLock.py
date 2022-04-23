@@ -9,7 +9,8 @@ class ReadWriteLock:
   only one "write lock." """
 
   def __init__(self, withPromotion=False):
-    self._read_ready = threading.Condition(threading.RLock(  ))
+    #self._read_ready = threading.Condition(threading.RLock(  ))
+    self._read_ready = threading.Condition(threading.Lock(  ))
     self._readers = 0
     self._writers = 0
     self._promote = withPromotion

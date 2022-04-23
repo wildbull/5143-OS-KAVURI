@@ -12,6 +12,8 @@ from random import shuffle
 
 import memory
 import rwLock
+from readwritelock import RWLock
+import orealy_lock
 #default number of writers
 NUM_WRITERS = 5
 NUM_INSTRUCTIONS_PER_FILE = 128
@@ -19,11 +21,16 @@ NUM_REGISTERS = 2
 LOCK_ENTIRE_MEM = True
 
 #GLOGAL LOCK
-LOCK = rwLock.ReadWriteLock(withPromotion=True)
+'''
+LOCK = RWLock() 
+
+#LOCK = rwLock.ReadWriteLock(withPromotion=True)
+LOCK = rwLock.ReadWriteLock()
 LOCK_A = rwLock.ReadWriteLock()
 LOCK_B = rwLock.ReadWriteLock()
 LOCK_C = rwLock.ReadWriteLock()
-
+'''
+LOCK = orealy_lock.ReadWriteLock()
 
 #reader threads
 READER_THREADS = []
@@ -31,7 +38,11 @@ READER_THREADS = []
 WRITER_THREADS = []
 #output thread
 OUTPUT_THREAD = None
+
 #GLOBAL data
+stop_readers = False
+
+
 with open("memory.json") as fd:
     MEMORY = json.load(fd)
 
@@ -50,7 +61,7 @@ def execute_instruction(instruction):
     result = 0
     for line in instruction:
         line = line.strip().split(" ")
-        print(line)
+        #print(line)
         if line[0] == "READ":
            registers[int((line[-1].strip())[1:])] = MEMORY[line[1][0]][line[1][1:]]
         if line[0] in ["ADD", "SUB", "MUL", "DIV"]:
@@ -72,10 +83,15 @@ def execute_instruction(instruction):
 
 def reader():
     while True:
+        if stop_readers:
+            break
         #acquire lock
+        #with LOCK.r_locked():
         with rwLock.ReadRWLock(LOCK) as lock:
             #store the values in dummy variable
             sleep(0.5)
+            pass
+        sleep(0.5)
         
     pass
 
@@ -95,19 +111,23 @@ def writer(file_name):
     for instruction in instructions:
         #acquire lock
         #TODO add logic to identify memory location to use lock specific to the location
+        #with LOCK.w_locked():
         with rwLock.WriteRWLock(LOCK) as lock:
             execute_instruction(instruction)
-            sleep(0.3)
             #run the instrutctions
+            sleep(0.2)
+        sleep(0.3)
 
 def printer(lock):
     print("Number of readers up :: ", len(READER_THREADS))
     print("Number of writers up :: ", len(WRITER_THREADS))
+    #print("readers = " + str(lock.num_r) + " , Writers = "+ str(lock.num_w) )
     print("readers = " + str(lock._readers) + " , Writers = "+ str(lock._writers) )
-    #print("readers = "+ "\n".join(lock._readerList))
-    #print("readers = "+ "\n".join(lock._writerList))
+    '''
+    print("readers = "+ "\n".join(map(str, lock._readerList)))
+    print("writers = "+ "\n".join(map(str,lock._writerList)))
+    '''
     sleep(0.3)
-
 
 def create_threads():
     num_readers = NUM_WRITERS * 5
@@ -136,6 +156,8 @@ def run_threads():
 
 def print_thread_handler():
     while True:
+        if stop_readers:
+            break
         if LOCK_ENTIRE_MEM:
             printer(LOCK)
         else:
@@ -166,10 +188,15 @@ if __name__ == "__main__":
     printer_thread.start()
     for tr in WRITER_THREADS:
         tr.join()
+    stop_readers = True
     end_time = datetime.now()
     #printer_thread.pause()
 
     print("time taken :: ", end_time - start_time)
+    
+    with open("memory_after_run.json", "w") as fd:
+        json.dump(MEMORY, fd, indent=4)
+
     #writer("Instructions_4.txt")
 
 
