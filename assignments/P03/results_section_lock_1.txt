@@ -1,0 +1,739 @@
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 1
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+Number of readers up ::  25
+Number of writers up ::  5
+readers = 0 , Writers = 0
+time taken ::  0:01:13.420745

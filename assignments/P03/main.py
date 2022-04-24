@@ -14,11 +14,7 @@ import memory
 import rwLock
 from readwritelock import RWLock
 import orealy_lock
-#default number of writers
-NUM_WRITERS = 5
-NUM_INSTRUCTIONS_PER_FILE = 128
-NUM_REGISTERS = 2
-LOCK_ENTIRE_MEM = True
+from globals import *
 
 #GLOGAL LOCK
 '''
@@ -31,6 +27,12 @@ LOCK_B = rwLock.ReadWriteLock()
 LOCK_C = rwLock.ReadWriteLock()
 '''
 LOCK = orealy_lock.ReadWriteLock()
+
+if not LOCK_ENTIRE_MEM:
+    LOCK_A = orealy_lock.ReadWriteLock()
+    LOCK_B = orealy_lock.ReadWriteLock()
+    LOCK_C = orealy_lock.ReadWriteLock()
+
 
 #reader threads
 READER_THREADS = []
@@ -54,6 +56,14 @@ def generate_instruction_files():
         
         with open("Instructions_"+str(i)+".txt", "w") as fd:
             fd.write("\n".join(instructions))
+    
+    for i in range(NUM_READERS):
+        instructions = []
+        for j in range(NUM_INSTRUCTIONS_PER_FILE):
+            instructions.append(memory.randreadonlyInstruction())
+        with open("Readonly_Instructions_"+str(i)+".txt", "w") as fd:
+            fd.write("\n".join(instructions))
+        
 
 
 def execute_instruction(instruction):
@@ -81,19 +91,39 @@ def execute_instruction(instruction):
     print(MEMORY["A"]) 
     '''
 
-def reader():
-    while True:
+def reader(file_name):
+    content = []
+    with open(file_name) as fd:
+        fd.readlines()
+
+    for line in content:
+        if not line.strip():
+            continue
+        line_content = line.split(" ")
         if stop_readers:
             break
         #acquire lock
         #with LOCK.r_locked():
-        with rwLock.ReadRWLock(LOCK) as lock:
+        if LOCK_ENTIRE_MEM:
+            lock = LOCK
+        else:
+            #figure out which lock
+            mem_block = line_content[1][0] 
+            if mem_block == "A":
+                lock = LOCK_A
+                #print("reader :: using LOCK_A")
+            if mem_block == "B":
+                lock = LOCK_B
+                #print("reader :: using LOCK_B")
+            if mem_block == "C":
+                lock = LOCK_C
+                #print("reader :: using LOCK_C")
+
+        with rwLock.ReadRWLock(lock) as lck:
             #store the values in dummy variable
             sleep(0.5)
-            pass
         sleep(0.5)
         
-    pass
 
 def writer(file_name):
     content = []
@@ -112,7 +142,23 @@ def writer(file_name):
         #acquire lock
         #TODO add logic to identify memory location to use lock specific to the location
         #with LOCK.w_locked():
-        with rwLock.WriteRWLock(LOCK) as lock:
+        if LOCK_ENTIRE_MEM:
+            lock = LOCK
+        else:
+            #figure out which lock
+            line_content = instruction[0].split(" ")
+            mem_block = line_content[1][0] 
+            if mem_block == "A":
+                lock = LOCK_A
+                #print("writer :: using LOCK_A")
+            if mem_block == "B":
+                lock = LOCK_B
+                #print("writer :: using LOCK_B")
+            if mem_block == "C":
+                lock = LOCK_C
+                #print("writer :: using LOCK_C")
+
+        with rwLock.WriteRWLock(lock) as lck:
             execute_instruction(instruction)
             #run the instrutctions
             sleep(0.2)
@@ -134,7 +180,7 @@ def create_threads():
 
     #create readers
     for i in range(num_readers):
-        READER_THREADS.append(threading.Thread(target=reader))
+        READER_THREADS.append(threading.Thread(target=reader, args=("Readonly_Instructions_"+str(i)+".txt",)))
     
     for i in range(NUM_WRITERS):
         WRITER_THREADS.append(threading.Thread(target=writer, args=("Instructions_"+str(i)+".txt",)))
@@ -180,7 +226,7 @@ if __name__ == "__main__":
             LOCK_ENTIRE_MEM = False
     
     #TODO :: collect start and end time here
-    #generate_instruction_files()
+    generate_instruction_files()
     start_time = datetime.now()
     create_threads()
     run_threads()
@@ -194,7 +240,11 @@ if __name__ == "__main__":
 
     print("time taken :: ", end_time - start_time)
     
-    with open("memory_after_run.json", "w") as fd:
+    if LOCK_ENTIRE_MEM:  
+        mem_dump_file = "memory_after_run_full_lock.json"
+    else:
+        mem_dump_file = "memory_after_run_section_lock.json"
+    with open( mem_dump_file ,"w") as fd:
         json.dump(MEMORY, fd, indent=4)
 
     #writer("Instructions_4.txt")
