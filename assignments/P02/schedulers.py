@@ -7,7 +7,7 @@ import sys
 from time import sleep
 import threading
 
-########## PROMPT_APP ################
+########## PROMPT_APP ##################
 from re import I
 from prompt_toolkit import Application
 from prompt_toolkit.buffer import Buffer
@@ -114,10 +114,13 @@ class FCFS:
         results = print_ques(self)
         #rint("time step = ",self.time , "\n")
         #print(results)
+        self.buffer.insert_text("FCFS \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
         self.buffer.insert_text(results + "\n")
         released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs))
+        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i) for i in io_releases]
+        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
         return results
 
 
@@ -195,8 +198,13 @@ class SJF:
         results = print_ques(self)
         #print("time step = ",self.time , "\n")
         #print(results)
+        self.buffer.insert_text("SJF \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
         self.buffer.insert_text(results + "\n")
+        released_jobs = [str(i) for i in released_jobs]
+        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i) for i in io_releases]
+        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
         return results
 
 class SRT:
@@ -272,8 +280,13 @@ class SRT:
         results = print_ques(self)
         #print("time step = ",self.time , "\n")
         #print(results)
+        self.buffer.insert_text("SRT \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
         self.buffer.insert_text(results + "\n")
+        released_jobs = [str(i) for i in released_jobs]
+        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i) for i in io_releases]
+        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
         return results
 
 
@@ -357,8 +370,13 @@ class RR:
         results = print_ques(self)
         #print("time step = ",self.time , "\n")
         #print(results)
+        self.buffer.insert_text("RR \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
         self.buffer.insert_text(results + "\n")
+        released_jobs = [str(i) for i in released_jobs]
+        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i) for i in io_releases]
+        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
         return results
 
 
@@ -435,8 +453,13 @@ class PB:
         results = print_ques(self)
         #print("time step = ",self.time , "\n")
         #print(results)
+        self.buffer.insert_text("Priority Based \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
         self.buffer.insert_text(results + "\n")
+        released_jobs = [str(i) for i in released_jobs]
+        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i) for i in io_releases]
+        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
         return results
 
 class Simulator:
@@ -462,6 +485,7 @@ class Simulator:
         return results
     
     def run_simulation(self):
+        global Pause
         while True:
             if Pause:
                 Pause = False
@@ -469,6 +493,7 @@ class Simulator:
             else:
                 results = self.run_time_step()
                 #print(results)
+            sleep(2)
 
 def update_results(results):
     #update labels and progressbars
@@ -555,7 +580,7 @@ help_str += """
 """
 @kb.add('c-c')
 def exit_(event):
-    schedulers.Pause = True
+    Pause = True
 
 
 help_str += """
@@ -563,7 +588,7 @@ help_str += """
 """
 @kb.add('c-s')
 def exit_(event):
-    schedulers.Pause = True
+    simulator.run_simulation()
 
 help_str += """
     Pressing Ctrl-n will run next time step in simulation

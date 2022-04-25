@@ -139,6 +139,7 @@ class JobStateQueue:
 
   def __str__(self):
     s = f'{self.__class__.__name__} Items: {len(self.q)} \n'
+    #s = f'{len(self.q)} \t'
     return s
     
 class ReadyQueue(JobStateQueue):
