@@ -502,6 +502,7 @@ def update_results(results):
 #if __name__ == "__main__":
 
 simulator = Simulator(load_data())
+simulator_thread = threading.Thread(target = simulator.run_simulation)
 #######################################
 
 root_container = HSplit([
@@ -576,10 +577,13 @@ def exit_(event):
 
 
 help_str += """
-    Pressing Ctrl-c will pause simulatior runs
+    Pressing Ctrl-p will pause simulatior run
 """
-@kb.add('c-c')
+@kb.add('c-p')
 def exit_(event):
+    global Pause
+    global simulator_thread 
+    simulator_thread = threading.Thread(target = simulator.run_simulation)
     Pause = True
 
 
@@ -588,7 +592,7 @@ help_str += """
 """
 @kb.add('c-s')
 def exit_(event):
-    simulator.run_simulation()
+    simulator_thread.start()
 
 help_str += """
     Pressing Ctrl-n will run next time step in simulation
