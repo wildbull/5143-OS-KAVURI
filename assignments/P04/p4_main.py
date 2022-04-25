@@ -59,6 +59,8 @@ def execute_instruction(instruction):
         if line[0] == "LOAD":
             print("Priviliged section update :: " , line)
             REGISTERS[int(line[2].strip()[1:])] = int(line[1])
+        #if line[0] == "sleep":
+        #    sleep()
 
 def program(file_name):
     instructions = None
