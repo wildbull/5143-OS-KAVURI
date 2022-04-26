@@ -1,11 +1,12 @@
 from hashlib import new
 from platform import release
-from main import IoQueue, Pcb,JobStateQueue,ReadyQueue,WaitQueue,RunningQueue,TerminatedQueue
+from utils import IoQueue, Pcb,JobStateQueue,ReadyQueue,WaitQueue,RunningQueue,TerminatedQueue
 from simulate import *
 from config import *
 import sys
 from time import sleep
 import threading
+import textwrap as tr
 
 ########## PROMPT_APP ##################
 from re import I
@@ -13,27 +14,60 @@ from prompt_toolkit import Application
 from prompt_toolkit.buffer import Buffer
 from prompt_toolkit.layout.containers import VSplit, Window , HSplit
 from prompt_toolkit.layout.controls import BufferControl, FormattedTextControl
+from prompt_toolkit.output.color_depth import ColorDepth
 from prompt_toolkit.layout.layout import Layout
 from prompt_toolkit.key_binding import KeyBindings
-########################################
+from prompt_toolkit.styles import Style
+############################################
 
+######## Visualisatoin settings ############
 fcfs_buffer = Buffer()  # Editable buffer.
 sjf_buffer = Buffer()  # Editable buffer.
 rr_buffer = Buffer()  # Editable buffer.
 srt_buffer = Buffer()  # Editable buffer.
 pb_buffer = Buffer()  # Editable buffer.
+generic_buffer = Buffer()  # Editable buffer.
 
-fcfs_window = Window(content=BufferControl(buffer=fcfs_buffer))
-sjf_window = Window(content=BufferControl(buffer=sjf_buffer))
-rr_window = Window(content=BufferControl(buffer=rr_buffer))
-srt_window = Window(content=BufferControl(buffer=srt_buffer))
-pb_window = Window(content=BufferControl(buffer=pb_buffer))
+style = Style([
+     ('left', 'bg:ansired'),
+     ('top', 'fg:#00aaaa'),
+     ('bottom', 'underline bold'),
+     ])
 
-########################################
+#######
+#repeatable_container = Hsplit([ 
+
+#######
+
+fcfs_window = Window(content=BufferControl(buffer=fcfs_buffer), style="class:top")
+sjf_window = Window(content=BufferControl(buffer=sjf_buffer),style="class:top")
+rr_window = Window(content=BufferControl(buffer=rr_buffer), style="class:top")
+srt_window = Window(content=BufferControl(buffer=srt_buffer),style="class:top")
+pb_window = Window(content=BufferControl(buffer=pb_buffer),style="class:top")
+generic_window = Window(content=BufferControl(buffer=generic_buffer),style="class:top")
+
+#############################################
 
 NewQueue = JobStateQueue()
 
 Pause = False
+
+make_2digits = lambda x: '0'*(2-len(x)) + x
+def make_n_digits(lst , max_len = NUM_CPUS):
+    lst = [make_2digits(i) for i in lst]
+    string =  ",".join(lst)
+    length_needed = 3*max_len - 1
+    if len(string) < length_needed:
+        string += "*"*(length_needed-len(string))
+    return string
+
+def print_cpu(running, cpu_released, io_released):
+    string =''' 
+    |--RUNNING--| |---I.O---| |--READY--|
+    |   %s   | |  %s  | |  %s  |           
+    -------------------------------------
+    '''%(make_n_digits(running), make_n_digits(cpu_released), make_n_digits(io_released))
+    return tr.dedent(string)
 
 def print_ques(scheduler_obj):
     return_str = ""
@@ -44,6 +78,19 @@ def print_ques(scheduler_obj):
     return_str += str(scheduler_obj.ioQueue)
     return_str += str(scheduler_obj.terminatedQueue)
     return return_str
+
+def print_scheduler(scheduler_obj, results, released_jobs, io_releases):
+    scheduler_obj.buffer.insert_text("FCFS \n")
+    scheduler_obj.buffer.insert_text("time step = "+ str(scheduler_obj.time) + "\n")
+    scheduler_obj.buffer.insert_text(results)
+    running_pids = [str(i.pid) for i in scheduler_obj.runningQueue.q]
+    #self.buffer.insert_text("Running ::  "+ str(running_pids)+ "\n")
+    released_jobs = [str(i.pid) for i in released_jobs]
+    #self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+    io_releases = [str(i.pid) for i in io_releases]
+    #self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+    scheduler_obj.buffer.insert_text(print_cpu(running_pids, released_jobs, io_releases))
+
 
 class FCFS:
     def __init__(self, data, buffer):
@@ -112,15 +159,21 @@ class FCFS:
             self.terminatedQueue.add(completed_jobs)
         
         results = print_ques(self)
+        '''
         #rint("time step = ",self.time , "\n")
         #print(results)
         self.buffer.insert_text("FCFS \n")
         self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results + "\n")
-        released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i) for i in io_releases]
-        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        self.buffer.insert_text(results)
+        running_pids = [str(i.pid) for i in self.runningQueue.q]
+        #self.buffer.insert_text("Running ::  "+ str(running_pids)+ "\n")
+        released_jobs = [str(i.pid) for i in released_jobs]
+        #self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
+        io_releases = [str(i.pid) for i in io_releases]
+        #self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        self.buffer.insert_text(print_cpu(running_pids, released_jobs, io_releases))
+        '''
+        print_scheduler(self, results, released_jobs, io_releases)
         return results
 
 
@@ -514,13 +567,13 @@ root_container = HSplit([
         # make sure that the layout engine will not try to divide the whole
         # width by three for all these windows. The window will simply fill its
         # content by repeating this character.
-        Window(width=1, char='|'),
+        Window(width=1, char='|', style="class:left"),
 
         # Display the text 'Hello world' on the right.
         sjf_window,
     ]),
     
-    Window(height=1, char='-'),
+    Window(height=1, char='-', style="class:left"),
 
     VSplit([
         # One window that holds the BufferControl with the default buffer on
@@ -530,13 +583,13 @@ root_container = HSplit([
         # make sure that the layout engine will not try to divide the whole
         # width by three for all these windows. The window will simply fill its
         # content by repeating this character.
-        Window(width=1, char='|'),
+        Window(width=1, char='|', style="class:left"),
 
         # Display the text 'Hello world' on the right.
         rr_window,
     ]), 
     
-    Window(height=1, char='-'),
+    Window(height=1, char='-', style="class:left"),
     
     VSplit([
         # One window that holds the BufferControl with the default buffer on
@@ -546,7 +599,7 @@ root_container = HSplit([
         # make sure that the layout engine will not try to divide the whole
         # width by three for all these windows. The window will simply fill its
         # content by repeating this character.
-        Window(width=1, char='|'),
+        Window(width=1, char='|', style="class:left"),
 
         # Display the text 'Hello world' on the right.
         pb_window,
@@ -620,7 +673,7 @@ for i in range(2000):
     results = simulator.run_time_step()
     print(results)
 '''
-app = Application(layout=layout, key_bindings=kb, full_screen=True)
+app = Application(layout=layout, key_bindings=kb, full_screen=True, color_depth=ColorDepth.DEPTH_24_BIT, style=style)
 app.run() # You won't be able to Exit this app
     
 

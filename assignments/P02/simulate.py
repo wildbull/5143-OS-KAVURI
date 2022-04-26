@@ -3,7 +3,7 @@ from tkinter import *
 from ttkthemes import ThemedTk
 import json
 
-from main import Pcb,JobStateQueue,ReadyQueue,WaitQueue
+from utils import Pcb,JobStateQueue,ReadyQueue,WaitQueue
 NewQueue = JobStateQueue()
 
 '''
