@@ -606,6 +606,8 @@ help_str += """
 def exit_(event):
     #Setting a return value means: quit the event loop that drives the user
     #interface and return this value from the `Application.run()` call.
+    global Pause
+    Pause = True
     event.app.exit()
 
 
