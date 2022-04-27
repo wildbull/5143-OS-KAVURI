@@ -226,7 +226,7 @@ if __name__ == "__main__":
             LOCK_ENTIRE_MEM = False
     
     #TODO :: collect start and end time here
-    generate_instruction_files()
+    #generate_instruction_files()
     start_time = datetime.now()
     create_threads()
     run_threads()
