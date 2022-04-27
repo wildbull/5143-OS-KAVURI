@@ -80,15 +80,12 @@ def print_ques(scheduler_obj):
     return return_str
 
 def print_scheduler(scheduler_obj, results, released_jobs, io_releases):
-    scheduler_obj.buffer.insert_text("FCFS \n")
+    scheduler_obj.buffer.insert_text(scheduler_obj.__class__.__name__+" \n")
     scheduler_obj.buffer.insert_text("time step = "+ str(scheduler_obj.time) + "\n")
     scheduler_obj.buffer.insert_text(results)
     running_pids = [str(i.pid) for i in scheduler_obj.runningQueue.q]
-    #self.buffer.insert_text("Running ::  "+ str(running_pids)+ "\n")
     released_jobs = [str(i.pid) for i in released_jobs]
-    #self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
     io_releases = [str(i.pid) for i in io_releases]
-    #self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
     scheduler_obj.buffer.insert_text(print_cpu(running_pids, released_jobs, io_releases))
 
 
@@ -156,23 +153,9 @@ class FCFS:
                     break
 
         for job in completed_jobs:
-            self.terminatedQueue.add(completed_jobs)
+            self.terminatedQueue.add(job)
         
         results = print_ques(self)
-        '''
-        #rint("time step = ",self.time , "\n")
-        #print(results)
-        self.buffer.insert_text("FCFS \n")
-        self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results)
-        running_pids = [str(i.pid) for i in self.runningQueue.q]
-        #self.buffer.insert_text("Running ::  "+ str(running_pids)+ "\n")
-        released_jobs = [str(i.pid) for i in released_jobs]
-        #self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i.pid) for i in io_releases]
-        #self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
-        self.buffer.insert_text(print_cpu(running_pids, released_jobs, io_releases))
-        '''
         print_scheduler(self, results, released_jobs, io_releases)
         return results
 
@@ -246,18 +229,10 @@ class SJF:
                     break
 
         for job in completed_jobs:
-            self.terminatedQueue.add(completed_jobs)
+            self.terminatedQueue.add(job)
         
         results = print_ques(self)
-        #print("time step = ",self.time , "\n")
-        #print(results)
-        self.buffer.insert_text("SJF \n")
-        self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results + "\n")
-        released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i) for i in io_releases]
-        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        print_scheduler(self, results, released_jobs, io_releases)
         return results
 
 class SRT:
@@ -328,18 +303,10 @@ class SRT:
                     break
 
         for job in completed_jobs:
-            self.terminatedQueue.add(completed_jobs)
+            self.terminatedQueue.add(job)
         
         results = print_ques(self)
-        #print("time step = ",self.time , "\n")
-        #print(results)
-        self.buffer.insert_text("SRT \n")
-        self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results + "\n")
-        released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i) for i in io_releases]
-        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        print_scheduler(self, results, released_jobs, io_releases)
         return results
 
 
@@ -418,18 +385,10 @@ class RR:
                     break
 
         for job in completed_jobs:
-            self.terminatedQueue.add(completed_jobs)
+            self.terminatedQueue.add(job)
         
         results = print_ques(self)
-        #print("time step = ",self.time , "\n")
-        #print(results)
-        self.buffer.insert_text("RR \n")
-        self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results + "\n")
-        released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i) for i in io_releases]
-        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        print_scheduler(self, results, released_jobs, io_releases)
         return results
 
 
@@ -501,18 +460,10 @@ class PB:
                     break
 
         for job in completed_jobs:
-            self.terminatedQueue.add(completed_jobs)
+            self.terminatedQueue.add(job)
         
         results = print_ques(self)
-        #print("time step = ",self.time , "\n")
-        #print(results)
-        self.buffer.insert_text("Priority Based \n")
-        self.buffer.insert_text("time step = "+ str(self.time) + "\n")
-        self.buffer.insert_text(results + "\n")
-        released_jobs = [str(i) for i in released_jobs]
-        self.buffer.insert_text("Released jobs = "+ ",".join(released_jobs)+ "\n")
-        io_releases = [str(i) for i in io_releases]
-        self.buffer.insert_text("IO releases = "+ ",".join(io_releases) + "\n")
+        print_scheduler(self, results, released_jobs, io_releases)
         return results
 
 class Simulator:
@@ -545,8 +496,37 @@ class Simulator:
                 return
             else:
                 results = self.run_time_step()
+                self.get_aggregations()
                 #print(results)
-            sleep(2)
+            sleep(1)
+
+    def get_aggregations(self):
+        to_return = ""
+        for shed in self.schedulers:
+            cpu_wait_time = 0
+            io_wait_time  = 0
+            all_ps = shed.newQueue.q + \
+                     shed.readyQueue.q + \
+                     shed.waitQueue.q + \
+                     shed.runningQueue.q + \
+                     shed.ioQueue.q + \
+                     shed.terminatedQueue.q
+
+            for p in all_ps:
+                try:
+                    cpu_wait_time += p.CPUWaitTime
+                    io_wait_time += p.IOWaitTime
+                except Exception as e:
+                    #print(p)
+                    #print(e)
+                    print(shed.terminatedQueue.q)
+            to_return += (shed.__class__.__name__ + " :: ")
+            to_return += str(cpu_wait_time) + " - " + str(io_wait_time) + " - " + str(len(shed.terminatedQueue.q))
+            to_return += "\n" 
+            
+        generic_buffer.insert_text(to_return)
+
+            
 
 def update_results(results):
     #update labels and progressbars
@@ -602,11 +582,11 @@ root_container = HSplit([
         Window(width=1, char='|', style="class:left"),
 
         # Display the text 'Hello world' on the right.
-        pb_window,
+        generic_window,
     ]), 
 ])
-layout = Layout(root_container)
 
+layout = Layout(root_container)
 
 kb = KeyBindings()
 
@@ -655,6 +635,7 @@ def exit_(event):
     #schedulers.Pause = True
     #run_time_step_dummy()
     simulator.run_time_step()
+    simulator.get_aggregations()
 
 if len(sys.argv)> 1:
     print(help_str)
@@ -666,13 +647,6 @@ if len(sys.argv)> 1:
 
 #######################################
 
-
-
-'''
-for i in range(2000):
-    results = simulator.run_time_step()
-    print(results)
-'''
 app = Application(layout=layout, key_bindings=kb, full_screen=True, color_depth=ColorDepth.DEPTH_24_BIT, style=style)
 app.run() # You won't be able to Exit this app
     
