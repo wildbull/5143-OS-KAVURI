@@ -35,8 +35,6 @@ style = Style([
      ])
 
 #######
-#repeatable_container = Hsplit([ 
-
 #######
 
 fcfs_window = Window(content=BufferControl(buffer=fcfs_buffer), style="class:top")
@@ -501,7 +499,7 @@ class Simulator:
             sleep(1)
 
     def get_aggregations(self):
-        to_return = ""
+        to_return = "    CPU_wait - IO wait - finished jobs \n"
         for shed in self.schedulers:
             cpu_wait_time = 0
             io_wait_time  = 0
@@ -517,14 +515,12 @@ class Simulator:
                     cpu_wait_time += p.CPUWaitTime
                     io_wait_time += p.IOWaitTime
                 except Exception as e:
-                    #print(p)
-                    #print(e)
                     print(shed.terminatedQueue.q)
-            to_return += (shed.__class__.__name__ + " :: ")
-            to_return += str(cpu_wait_time) + " - " + str(io_wait_time) + " - " + str(len(shed.terminatedQueue.q))
+            to_return += (shed.__class__.__name__ + " ::   ")
+            to_return += str(cpu_wait_time) + "  -  " + str(io_wait_time) + "  -  " + str(len(shed.terminatedQueue.q))
             to_return += "\n" 
             
-        generic_buffer.insert_text(to_return)
+        generic_buffer.insert_text(to_return+"\n\n\n")
 
             
 
