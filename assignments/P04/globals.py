@@ -1,3 +1,4 @@
 #default number of writers
 NUM_FILES = 5
 NUM_REGISTERS = 5
+NUM_INSTRUCTIONS_PER_FILE = 1000 

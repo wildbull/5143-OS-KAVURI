@@ -2,7 +2,7 @@ from random import shuffle, randint
 import json
 import random
 from datetime import datetime
-
+from globals import *
 
 def buildRandomChoiceList(ratio):
 
@@ -49,7 +49,7 @@ class RandInstructions:
         # instructions
         self.addressRange = kwargs.get("addressRange", (100, 255, 5))
         self.choices = kwargs.get("choices", ["ADD", "SUB", "MUL", "DIV"])
-        self.genAmount = kwargs.get("genAmount", 1000)
+        self.genAmount = kwargs.get("genAmount", NUM_INSTRUCTIONS_PER_FILE)
         self.memblocks = kwargs.get("memblocks", ["A", "B", "C"])
         self.registers = kwargs.get("registers", ["R1", "R2"])
         self.outFilePattern = kwargs.get("outFile", "program_")
