@@ -273,6 +273,17 @@ def reader(file_name):
     with open(file_name) as fd:
         fd.readlines()
 
+    content = []
+    with open(file_name) as fd:
+        content = fd.readlines()
+    idx_list = [idx+1 for idx, val in enumerate(content) if not val.strip()]
+    size = len(content)
+    instructions = [content[i: j] for i, j in
+        zip([0] + idx_list, idx_list + 
+        ([size] if idx_list[-1] != size else []))]
+
+
+
     for line in content:
         if not line.strip():
             continue
@@ -298,8 +309,9 @@ def reader(file_name):
 
         with rwLock.ReadRWLock(lock) as lck:
             #store the values in dummy variable
+            execute_instruction([line])
             add_log("#################################")
-            sleep(0.7)
+            #sleep(0.7)
         sleep(0.3)
         
 
