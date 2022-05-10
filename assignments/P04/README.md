@@ -1,5 +1,10 @@
 ## Reader Writer Part 2 - Simulating Race Conditions
-#### Due: 04-25-2022 (Wednesday @ 2:30 p.m.)
+####
+
+to run the simulation, please use the following command:
+python3 p4_main.py
+
+Tried to implement the below mentioned usecase :
 
 
 ## Overview
